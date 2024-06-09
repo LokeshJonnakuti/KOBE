@@ -33,7 +33,7 @@ if __name__ == "__main__":
                 f.write(input_f.read() + "\n")
         # run sentence piece with bpe
         spm.SentencePieceTrainer.Train(
-            f"--add_dummy_prefix=false --pad_id=0 --bos_id=1 --eos_id=2 --unk_id=3 "
+            "--add_dummy_prefix=false --pad_id=0 --bos_id=1 --eos_id=2 --unk_id=3 "
             f"--vocab_size={args.vocab_size} "
             f"--model_prefix={args.vocab_file} --model_type={args.algo} "
             f"--input={f.name}"

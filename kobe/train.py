@@ -41,8 +41,8 @@ if __name__ == "__main__":
         model = model.load_from_checkpoint(args.load_file, args=args, dm=dm)
 
     callbacks = [
-        EarlyStopping(monitor=f"val/bleu", mode="max", patience=args.patience),
-        ModelCheckpoint(monitor=f"val/bleu", mode="max"),
+        EarlyStopping(monitor="val/bleu", mode="max", patience=args.patience),
+        ModelCheckpoint(monitor="val/bleu", mode="max"),
         TQDMProgressBar(refresh_rate=10),
     ]
 
