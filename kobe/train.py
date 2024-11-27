@@ -1,5 +1,4 @@
 import argparse
-import random
 
 import numpy as np
 import pytorch_lightning as pl
@@ -10,13 +9,14 @@ from pytorch_lightning.loggers import WandbLogger
 from kobe.data.dataset import KobeDataModule
 from kobe.models.model import KobeModel
 from kobe.utils.options import add_args, add_options
+import secrets
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     add_options(parser)
     args = parser.parse_args()
     add_args(args)
-    random.seed(args.seed)
+    secrets.SystemRandom().seed(args.seed)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     wandb_logger = WandbLogger(name=args.name, project="kobe-v2", log_model=True)
